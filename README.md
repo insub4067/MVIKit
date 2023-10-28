@@ -25,7 +25,7 @@ struct ContentView: Viewable {
     static func build() -> Self {
         let model = ContentModel()
         let intent = ContentIntent()
-        return ContentView(
+        return .init(
             container: .init(
                 model: model,
                 intent: intent,
@@ -46,13 +46,14 @@ class ContentModel: Modelable {
 }
 
 class ContentIntent: Intentable {
+    
+    typealias Model = ContentModel
+
     var model: ContentModel?
     
     func send(_ action: Action) {
         model?.count += 1
     }
-
-    typealias Model = ContentModel
     
     enum Action {
         case didTap
