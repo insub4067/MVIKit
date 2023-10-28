@@ -16,7 +16,9 @@ import MVIKit
 
 struct ContentView: Mviable {
     
-    @StateObject var store: Store<ContentModel, ContentIntent>
+    @StateObject var store = Store(ContentIntent()) {
+        ContentModel()
+    }
     
     var body: some View {
         VStack {
@@ -24,13 +26,6 @@ struct ContentView: Mviable {
             Button("Button", action: { intent.send(.didTap) })
         }
         .padding()
-    }
-    
-    static func build() -> Self {
-        let model = ContentModel()
-        let intent = ContentIntent()
-        let store = Store(model: model, intent: intent)
-        return .init(store: store)
     }
 }
 ```

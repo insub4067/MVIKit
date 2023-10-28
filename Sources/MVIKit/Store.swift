@@ -17,12 +17,12 @@ public final class Store<Model: Modelable, Intent: Intentable>: ObservableObject
     private var cancellable = Set<AnyCancellable>()
     
     public init(
-        model: Model,
-        intent: Intent
+        _ intent: Intent,
+        modelBuilder: () -> Model
     ) {
+        self.model = modelBuilder()
         self.intent = intent
-        self.intent.model = model as? Intent.Model
-        self.model = model
+        self.intent.model = self.model as? Intent.Model
         
         model.objectWillChange
             .receive(on: DispatchQueue.main)
