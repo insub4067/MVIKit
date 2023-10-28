@@ -51,7 +51,10 @@ class ContentIntent: Intentable {
     var model: ContentModel?
     
     func send(_ action: Action) {
-        model?.count += 1
+        switch action {
+        case .didTap:
+            model?.count += 1
+        }
     }
     
     enum Action {
