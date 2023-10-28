@@ -29,13 +29,8 @@ struct ContentView: Mviable {
     static func build() -> Self {
         let model = ContentModel()
         let intent = ContentIntent()
-        return .init(
-            store: .init(
-                model: model,
-                intent: intent,
-                modelChangePublisher: model.objectWillChange
-            )
-        )
+        let store = Store(model: model, intent: intent)
+        return .init(store: store)
     }
 }
 ```

@@ -1,5 +1,5 @@
 //
-//  MVIContainer.swift
+//  Store.swift
 //  SwiftUIPractice
 //
 //  Created by 김인섭 on 10/28/23.
@@ -11,25 +11,25 @@ import Combine
 
 public final class Store<Model: Modelable, Intent: Intentable>: ObservableObject {
     
-    public let model: Model
+    @Published public var model: Model
     public let intent: Intent
     
     private var cancellable = Set<AnyCancellable>()
     
     public init(
         model: Model,
-        intent: Intent,
-        modelChangePublisher: ObjectWillChangePublisher
+        intent: Intent
     ) {
         self.intent = intent
         self.intent.model = model as? Intent.Model
         self.model = model
         
-        modelChangePublisher
+        model.objectWillChange
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: objectWillChange.send)
+            .sink { [weak self] _ in
+                self?.objectWillChange.send()
+            }
             .store(in: &cancellable)
     }
 }
-
 #endif
