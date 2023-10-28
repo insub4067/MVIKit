@@ -23,11 +23,10 @@ struct ContentView: View {
     @StateObject var store = Store(with: ContentIntent()) {
         ContentModel()
     }
-    private var model: ContentModel { store.model }
     
     var body: some View {
         VStack {
-            Text("\(model.count)")
+            Text("\(store.count)")
             Button("Button", action: { store.send(.didTap) })
         }
         .padding()
