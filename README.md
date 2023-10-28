@@ -41,7 +41,7 @@ class ContentModel: Modelable {
 
 class ContentIntent: Intentable {
 
-    var model: ContentModel?
+    weak var model: ContentModel?
     
     func send(_ action: Action) {
         switch action {
