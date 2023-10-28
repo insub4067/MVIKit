@@ -5,6 +5,7 @@
 //  Created by 김인섭 on 10/28/23.
 //
 
+#if canImport(Combine)
 import Foundation
 import Combine
 
@@ -30,3 +31,5 @@ public final class Container<Model: Modelable, Intent: Intentable>: ObservableOb
             .store(in: &cancellable)
     }
 }
+
+#endif
