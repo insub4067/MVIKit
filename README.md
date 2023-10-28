@@ -14,16 +14,17 @@
 import SwiftUI
 import MVIKit
 
-struct ContentView: Mviable {
+struct ContentView: View {
     
     @StateObject var store = Store(with: ContentIntent()) {
         ContentModel()
     }
+    private var model: ContentModel { store.model }
     
     var body: some View {
         VStack {
             Text("\(model.count)")
-            Button("Button", action: { intent.send(.didTap) })
+            Button("Button", action: { store.send(.didTap) })
         }
         .padding()
     }

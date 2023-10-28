@@ -31,5 +31,9 @@ public final class Store<Model: Modelable, Intent: Intentable>: ObservableObject
             }
             .store(in: &cancellable)
     }
+    
+    public func send(_ action: Intent.Action) {
+        intent.reduce(action)
+    }
 }
 #endif

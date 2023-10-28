@@ -14,5 +14,5 @@ public protocol Intentable: ObservableObject {
     
     var model: Model? { get set }
     
-    func send(_ action: Action)
+    func reduce(_ action: Action)
 }
