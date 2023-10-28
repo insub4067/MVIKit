@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-public final class Container<Model: Modelable, Intent: Intentable>: ObservableObject {
+public final class Store<Model: Modelable, Intent: Intentable>: ObservableObject {
     
     public let model: Model
     public let intent: Intent

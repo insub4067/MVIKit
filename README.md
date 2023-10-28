@@ -8,9 +8,9 @@
 import SwiftUI
 import MVIKit
 
-struct ContentView: Viewable {
+struct ContentView: Mviable {
     
-    @StateObject var container: Container<ContentModel, ContentIntent>
+    @StateObject var store: Store<ContentModel, ContentIntent>
     
     var body: some View {
         VStack {
@@ -24,7 +24,7 @@ struct ContentView: Viewable {
         let model = ContentModel()
         let intent = ContentIntent()
         return .init(
-            container: .init(
+            store: .init(
                 model: model,
                 intent: intent,
                 modelChangePublisher: model.objectWillChange
