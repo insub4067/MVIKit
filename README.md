@@ -16,7 +16,7 @@ import MVIKit
 
 struct ContentView: Mviable {
     
-    @StateObject var store = Store(ContentIntent()) {
+    @StateObject var store = Store(with: ContentIntent()) {
         ContentModel()
     }
     

@@ -17,7 +17,7 @@ public final class Store<Model: Modelable, Intent: Intentable>: ObservableObject
     private var cancellable = Set<AnyCancellable>()
     
     public init(
-        _ intent: Intent,
+        with intent: Intent,
         modelBuilder: () -> Model
     ) {
         self.model = modelBuilder()
