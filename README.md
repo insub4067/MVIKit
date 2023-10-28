@@ -1,9 +1,15 @@
 # 🔄 MVIKit
 
 > Help you easily implement MVI into SwiftUI.
-<img width="538" alt="스크린샷 2023-10-29 오전 12 23 13" src="https://github.com/insub4067/MVIKit/assets/85481204/d4fe7904-1994-4cbe-97e3-bea552db89a5">
 
-## ✔️ View
+## 🛠️ How it works
+### Store - Stores instance of intent and model. 
+### Intent - Interact with user's action 
+### Model - Data for ui
+<img width="530" alt="스크린샷 2023-10-29 오전 1 11 20" src="https://github.com/insub4067/MVIKit/assets/85481204/99e7264a-13cc-4eb4-bc79-91c3d36bde61">
+
+## ✔️ Example
+### View
 ```swift
 import SwiftUI
 import MVIKit
@@ -34,7 +40,7 @@ struct ContentView: Mviable {
 }
 ```
 
-## ✔️ Model, Intent
+### Model, Intent
 ```swift
 import Foundation
 import MVIKit
