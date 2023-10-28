@@ -10,9 +10,6 @@ import MVIKit
 
 struct ContentView: Viewable {
     
-    typealias Model = ContentModel
-    typealias Intent = ContentIntent
-    
     @StateObject var container: Container<ContentModel, ContentIntent>
     
     var body: some View {
