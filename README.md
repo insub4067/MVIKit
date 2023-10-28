@@ -48,7 +48,7 @@ class ContentIntent: Intentable {
 
     weak var model: ContentModel?
     
-    func send(_ action: Action) {
+    func reduce(_ action: Action) {
         switch action {
         case .didTap:
             model?.count += 1
