@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 
+@dynamicMemberLookup
 public final class Store<Model: Modelable, Intent: Intentable>: ObservableObject {
     
     @Published public var model: Model
@@ -34,6 +35,10 @@ public final class Store<Model: Modelable, Intent: Intentable>: ObservableObject
     
     public func send(_ action: Intent.Action) {
         intent.reduce(action)
+    }
+    
+    public subscript<PropertyType>(dynamicMember keyPath: KeyPath<Model, PropertyType>) -> PropertyType {
+        return model[keyPath: keyPath]
     }
 }
 #endif
