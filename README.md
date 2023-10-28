@@ -1,6 +1,6 @@
 # MVIKit
 
-> This Package support MVI framework for SwiftUI
+> Help you easily implement MVI into SwiftUI.
 
 ## ✔️ View
 ```swift
