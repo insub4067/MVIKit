@@ -1,5 +1,9 @@
 # 🔄 MVIKit
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Static Badge](https://img.shields.io/badge/iOS-v13-blue)
+![Static Badge](https://img.shields.io/badge/Swift-5.4-orange)
+
 > Help you easily implement MVI into SwiftUI.
 
 ## 🛠️ How it works
