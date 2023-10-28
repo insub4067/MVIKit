@@ -9,10 +9,10 @@ import MVIKit
 
 struct ContentView: Viewable {
     
-    @StateObject var container: Container<ContentModel, ContentIntent>
-
     typealias Model = ContentModel
     typealias Intent = ContentIntent
+    
+    @StateObject var container: Container<ContentModel, ContentIntent>
     
     var body: some View {
         VStack {
@@ -46,8 +46,6 @@ class ContentModel: Modelable {
 }
 
 class ContentIntent: Intentable {
-    
-    typealias Model = ContentModel
 
     var model: ContentModel?
     
