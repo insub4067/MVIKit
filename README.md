@@ -4,7 +4,7 @@
 ![Static Badge](https://img.shields.io/badge/iOS-v13-blue)
 ![Static Badge](https://img.shields.io/badge/Swift-5.4-orange)
 
-> Help you easily implement MVI into SwiftUI.
+> Help you can implement MVI easily into SwiftUI.
 
 ## 🛠️ How it works
 ### Store - Stores instance of intent and model. 
