@@ -2,7 +2,7 @@
 
 > This Package support MVI framework for SwiftUI
 
-## View
+## ✔️ View
 ```swift
 import SwiftUI
 import MVIKit
@@ -36,7 +36,7 @@ struct ContentView: Viewable {
 }
 ```
 
-## Model, Intent
+## ✔️ Model, Intent
 ```swift
 import Foundation
 import MVIKit
