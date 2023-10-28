@@ -8,14 +8,14 @@
 import Foundation
 import Combine
 
-final class Container<Model: Modelable, Intent: Intentable>: ObservableObject {
+public final class Container<Model: Modelable, Intent: Intentable>: ObservableObject {
     
-    let model: Model
-    let intent: Intent
+    public let model: Model
+    public let intent: Intent
     
     private var cancellable = Set<AnyCancellable>()
     
-    init(
+    public init(
         model: Model,
         intent: Intent,
         modelChangePublisher: ObjectWillChangePublisher

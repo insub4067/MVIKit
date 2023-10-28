@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Intentable: ObservableObject {
+public protocol Intentable: ObservableObject {
     
     associatedtype Action: Equatable
     associatedtype Model: Modelable

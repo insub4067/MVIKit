@@ -7,4 +7,4 @@
 
 import Foundation
 
-protocol Modelable: AnyObject, ObservableObject { }
+public protocol Modelable: AnyObject, ObservableObject { }
