@@ -44,7 +44,7 @@ import MVIKit
 
 class Counter: Reduceable {
 
-    class Model: Modelable {
+    class Model: ObservableObject {
         @Published var count = 0
     }
     
@@ -52,7 +52,7 @@ class Counter: Reduceable {
         case didTap
     }
     
-    var model: Model?
+    weak var model: Model?
     
     func reduce(_ action: Action) {
         switch action {
