@@ -20,9 +20,7 @@ import MVIKit
 
 struct ContentView: View {
     
-    @StateObject var store = Store(with: ContentIntent()) {
-        $0.Model()
-    }
+    @StateObject var store = Store(with: ContentReducer()) { $0.Model() }
     
     var body: some View {
         VStack(content: {
@@ -40,8 +38,10 @@ struct ContentView: View {
 import Foundation
 import MVIKit
 
-class ContentIntent: Intentable {
-
+class ContentReducer: Reduceable {
+    
+    var model: Model?
+    
     class Model: Modelable {
         @Published var count = 0
     }
@@ -49,8 +49,6 @@ class ContentIntent: Intentable {
     enum Action: Equatable {
         case didTap
     }
-    
-    weak var model: Model?
     
     func reduce(_ action: Action) {
         switch action {
