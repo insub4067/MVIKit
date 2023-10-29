@@ -18,9 +18,9 @@
 import SwiftUI
 import MVIKit
 
-struct ContentView: View {
+struct CounterView: View {
     
-    @StateObject var store = Store(with: ContentReducer()) { $0.Model() }
+    @StateObject var store = Store(with: Counter()) { $0.Model() }
     
     var body: some View {
         VStack(content: {
@@ -33,22 +33,22 @@ struct ContentView: View {
 }
 ```
 
-### Model, Intent
+### Reducer (Intent) - Model, Action
 ```swift
 import Foundation
 import MVIKit
 
-class ContentReducer: Reduceable {
-    
-    var model: Model?
-    
+class Counter: Reduceable {
+
     class Model: Modelable {
         @Published var count = 0
     }
-
+    
     enum Action: Equatable {
         case didTap
     }
+    
+    var model: Model?
     
     func reduce(_ action: Action) {
         switch action {
