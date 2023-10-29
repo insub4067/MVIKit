@@ -10,9 +10,9 @@
 > **MVIKit** - a package to help implement MVI easily into SwiftUI.  
 
 ## 🛠️ How it works
-#### Store - Store for instances of reducer and model.
-#### Reducer - Interact with user's action
-#### Model - Data for ui
+#### Store - stores instance of reducer and model.
+#### Reducer - interact with user's action
+#### Model - data for ui
 <img width="543" alt="스크린샷 2023-10-29 오후 12 33 50" src="https://github.com/insub4067/MVIKit/assets/85481204/c8bd69d5-bd3f-4025-8457-7fedda9fd4ca">
 
 
