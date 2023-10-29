@@ -104,9 +104,7 @@ import MVIKit
 
 struct MainTabView: View {
     
-    @StateObject var store = Store(with: MainTab()) {
-        $0.Model()
-    }
+    @StateObject var store = Store(with: MainTab()) { $0.Model() }
     
     var body: some View {
     
