@@ -21,15 +21,16 @@ import MVIKit
 struct ContentView: View {
     
     @StateObject var store = Store(with: ContentIntent()) {
-        ContentModel()
+        $0.Model()
     }
     
     var body: some View {
-        VStack {
+        VStack(content: {
             Text("\(store.count)")
-            Button("Button", action: { store.send(.didTap) })
-        }
-        .padding()
+            Button("button") {
+                store.send(.didTap)
+            }
+        })
     }
 }
 ```
@@ -39,23 +40,23 @@ struct ContentView: View {
 import Foundation
 import MVIKit
 
-class ContentModel: Modelable {
-    @Published var count = 0
-}
-
 class ContentIntent: Intentable {
 
-    weak var model: ContentModel?
+    class Model: Modelable {
+        @Published var count = 0
+    }
+
+    enum Action: Equatable {
+        case didTap
+    }
+    
+    weak var model: Model?
     
     func reduce(_ action: Action) {
         switch action {
         case .didTap:
             model?.count += 1
         }
-    }
-    
-    enum Action {
-        case didTap
     }
 }
 ```

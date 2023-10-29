@@ -11,8 +11,7 @@ public protocol Intentable: ObservableObject {
     
     associatedtype Action: Equatable
     associatedtype Model: Modelable
-    
+ 
     var model: Model? { get set }
-    
     func reduce(_ action: Action)
 }

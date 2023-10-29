@@ -19,10 +19,10 @@ public final class Store<Model: Modelable, Intent: Intentable>: ObservableObject
     
     public init(
         with intent: Intent,
-        modelBuilder: () -> Model
+        modelBuilder: (Intent.Type) -> Model
     ) {
-        self.model = modelBuilder()
         self.intent = intent
+        self.model = modelBuilder(Intent.self)
         self.intent.model = self.model as? Intent.Model
         
         model.objectWillChange
