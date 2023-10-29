@@ -124,7 +124,7 @@ struct MainTabView: View {
 
 class MainTab: Reduceable {
     
-    var model: Model?
+    weak var model: Model?
     
     enum Tab: Int, CaseIterable {
         case one, two, three
