@@ -151,7 +151,7 @@ class MainTab: Reduceable {
     func reduce(_ action: Action) {
         switch action {
         case .didSelect(let tab):
-            model?.currentTab = tab
+            print(tab)
         }
     }
 }
