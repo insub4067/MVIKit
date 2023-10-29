@@ -6,7 +6,7 @@
 
 ## What is MVI and MVIKit?
 [Hannes Dorfmann - MVI](https://hannesdorfmann.com/android/mosby3-mvi-1/)  
-> **MVI** - unidirectional Architecture which found by Hannes Dorfmann for Android.  
+> **MVI** - unidirectional architecture found by Hannes Dorfmann for Android.  
 > **MVIKit** - a package to help implement MVI easily into SwiftUI.  
 
 ## 🛠️ How it works
