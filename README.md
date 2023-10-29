@@ -16,8 +16,7 @@
 <img width="543" alt="스크린샷 2023-10-29 오후 12 33 50" src="https://github.com/insub4067/MVIKit/assets/85481204/c8bd69d5-bd3f-4025-8457-7fedda9fd4ca">
 
 
-## ✔️ Example
-### View
+## ✔️ Counter Example
 ```swift
 import SwiftUI
 import MVIKit
@@ -35,12 +34,6 @@ struct CounterView: View {
         })
     }
 }
-```
-
-### Reducer - Model, Action
-```swift
-import Foundation
-import MVIKit
 
 class Counter: Reduceable {
 
@@ -58,6 +51,44 @@ class Counter: Reduceable {
         switch action {
         case .didTap:
             model?.count += 1
+        }
+    }
+}
+```
+
+## ✔️ TextField Example
+```swift
+struct SearchView: View {
+    
+    @StateObject var store = Store(with: Search()) { $0.Model() }
+    
+    var body: some View {
+        VStack(content: {
+            TextField(text: $store.model.input) {
+                store.send(.textChanged($0))
+            } label: {
+                Text("Input")
+            }
+        })
+    }
+}
+
+class Search: Reduceable {
+    
+    weak var model: Model?
+    
+    class Model: ObservableObject {
+        @Published var input = ""
+    }
+    
+    enum Action: Equatable {
+        case textChanged(String)
+    }
+    
+    func reduce(_ action: Action) {
+        switch action {
+        case .textChanged(let string):
+            print(string)
         }
     }
 }
