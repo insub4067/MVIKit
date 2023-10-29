@@ -10,20 +10,20 @@ import Foundation
 import Combine
 
 @dynamicMemberLookup
-public final class Store<Model: Modelable, Intent: Intentable>: ObservableObject {
+public final class Store<Intent: Intentable>: ObservableObject {
     
-    @Published public var model: Model
+    @Published public var model: Intent.Model
     public let intent: Intent
     
     private var cancellable = Set<AnyCancellable>()
     
     public init(
         with intent: Intent,
-        modelBuilder: (Intent.Type) -> Model
+        modelBuilder: (Intent.Type) -> Intent.Model
     ) {
         self.intent = intent
         self.model = modelBuilder(Intent.self)
-        self.intent.model = self.model as? Intent.Model
+        self.intent.model = self.model
         
         model.objectWillChange
             .receive(on: DispatchQueue.main)
@@ -37,7 +37,7 @@ public final class Store<Model: Modelable, Intent: Intentable>: ObservableObject
         intent.reduce(action)
     }
     
-    public subscript<PropertyType>(dynamicMember keyPath: KeyPath<Model, PropertyType>) -> PropertyType {
+    public subscript<PropertyType>(dynamicMember keyPath: KeyPath<Intent.Model, PropertyType>) -> PropertyType {
         return model[keyPath: keyPath]
     }
 }
