@@ -10,7 +10,7 @@ import Foundation
 public protocol Reduceable: ObservableObject {
     
     associatedtype Action: Equatable
-    associatedtype Model: Modelable
+    associatedtype Model: ObservableObject
  
     var model: Model? { get set }
     func reduce(_ action: Action)
