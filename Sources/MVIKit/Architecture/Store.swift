@@ -13,7 +13,7 @@ import Combine
 public final class Store<Reducer: Reduceable>: ObservableObject {
     
     @Published public var model: Reducer.Model
-    public let intent: Reducer
+    public let reducer: Reducer
     
     private var cancellable = Set<AnyCancellable>()
     
@@ -21,9 +21,9 @@ public final class Store<Reducer: Reduceable>: ObservableObject {
         with reducer: Reducer,
         modelBuilder: (Reducer.Type) -> Reducer.Model
     ) {
-        self.intent = reducer
+        self.reducer = reducer
         self.model = modelBuilder(Reducer.self)
-        self.intent.model = self.model
+        self.reducer.model = self.model
         
         model.objectWillChange
             .receive(on: DispatchQueue.main)
@@ -34,7 +34,7 @@ public final class Store<Reducer: Reduceable>: ObservableObject {
     }
     
     public func send(_ action: Reducer.Action) {
-        intent.reduce(action)
+        reducer.reduce(action)
     }
     
     public subscript<PropertyType>(dynamicMember keyPath: KeyPath<Reducer.Model, PropertyType>) -> PropertyType {

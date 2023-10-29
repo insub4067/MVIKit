@@ -58,6 +58,9 @@ class Counter: Reduceable {
 
 ## ✔️ TextField Example
 ```swift
+import SwiftUI
+import MVIKit
+
 struct SearchView: View {
     
     @StateObject var store = Store(with: Search()) { $0.Model() }
@@ -89,6 +92,66 @@ class Search: Reduceable {
         switch action {
         case .textChanged(let string):
             print(string)
+        }
+    }
+}
+```
+
+## ✔️ TabView Example
+```swift 
+import SwiftUI
+import MVIKit
+
+struct MainTabView: View {
+    
+    @StateObject var store = Store(with: MainTab()) {
+        $0.Model()
+    }
+    
+    var body: some View {
+    
+        TabView(selection: $store.model.currentTab) {
+            store.send(.didSelect(tab: $0))
+        } content: {
+            ForEach(MainTab.Tab.allCases, id: \.self) { tab in
+                tab.text
+                    .tabItem { tab.text }
+                    .tag(tab)
+            }
+        }
+    }
+}
+
+class MainTab: Reduceable {
+    
+    var model: Model?
+    
+    enum Tab: Int, CaseIterable {
+        case one, two, three
+        var text: Text {
+            switch self {
+            case .one:
+                Text("One")
+            case .two:
+                Text("Two")
+            case .three:
+                Text("One")
+            }
+        }
+    }
+    
+    class Model: ObservableObject {
+        @Published var currentTab: Tab = .one
+    }
+    
+    enum Action: Equatable {
+        case didSelect(tab: Tab)
+    }
+    
+    func reduce(_ action: Action) {
+        switch action {
+        case .didSelect(let tab):
+            model?.currentTab = tab
         }
     }
 }

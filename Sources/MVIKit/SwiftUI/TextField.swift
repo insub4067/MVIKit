@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  TextField.swift
+//
 //
 //  Created by 김인섭 on 10/29/23.
 //
@@ -11,7 +11,7 @@ import SwiftUI
 @ViewBuilder public func TextField(
     text: Binding<String>,
     textChanged: @escaping (String) -> Void,
-    label: @escaping () -> some View
+    @ViewBuilder label: @escaping () -> some View
 ) -> some View {
     TextField(text: text, label: label)
         .onChange(of: text.wrappedValue, perform: { value in
