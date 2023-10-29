@@ -4,7 +4,7 @@
 ![Static Badge](https://img.shields.io/badge/iOS-v13-blue)
 ![Static Badge](https://img.shields.io/badge/Swift-5.4-orange)
 
-## 🤔 What is MVI and MVIKit?
+## What is MVI and MVIKit?
 > [Hannes Dorfmann - MVI](https://hannesdorfmann.com/android/mosby3-mvi-1/)  
 > **MVI** - unidirectional Architecture which found by Hannes Dorfmann for Android.  
 > **MVIKit** - a package to help implement MVI easily into SwiftUI.  
