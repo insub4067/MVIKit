@@ -16,7 +16,7 @@
 <img width="543" alt="스크린샷 2023-10-29 오후 12 33 50" src="https://github.com/insub4067/MVIKit/assets/85481204/c8bd69d5-bd3f-4025-8457-7fedda9fd4ca">
 
 
-## ✔️ Counter Example
+## ✔️ Counter Example - SwiftUI
 ```swift
 import SwiftUI
 import MVIKit
@@ -52,6 +52,69 @@ class Counter: Reduceable {
         case .didTap:
             model?.count += 1
         }
+    }
+}
+```
+
+## ✔️ Counter Example - UIKit
+```swift
+import UIKit
+import MVIKit
+import Combine
+
+class ViewController: UIViewController { 
+
+    @Published var store = Store(with: Counter()) { $0.Model() }
+    var cancellable = Set<AnyCancellable>()
+    
+    lazy var count: UILabel = {
+        let label = UILabel()
+        label.text = "\(self.store.count)"
+        ...
+        return label
+    }()
+
+    lazy var button: UIButton = {
+        let button = UIButton(primaryAction: UIAction(handler: { _ in
+            self.store.send(.didTap)
+        }))
+        ...
+        return button
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        ...
+        bind()
+    }
+
+    
+    func bind() {
+        store.$count
+            .receive(on: DispatchQueue.main)
+            .sink { value in
+                self.count.text = "\(value)"
+            }.store(in: &cancellable)
+    }
+}
+
+class Counter: Reduceable {
+    
+    var model: Model?
+    
+    func reduce(_ action: Action) {
+        switch action {
+        case .didTap:
+            model?.count += 1
+        }
+    }
+    
+    class Model: ObservableObject {
+        @Published var count = 0
+    }
+    
+    enum Action {
+        case didTap
     }
 }
 ```
