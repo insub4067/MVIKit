@@ -13,7 +13,7 @@ import Combine
 public final class Store<Reducer: Reduceable>: ObservableObject {
     
     @Published public var model: Reducer.Model
-    public let reducer: Reducer
+    private let reducer: Reducer
     
     private var cancellable = Set<AnyCancellable>()
     
