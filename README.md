@@ -154,3 +154,48 @@ class MainTab: Reduceable {
     }
 }
 ```
+
+## ✔️ Scroll
+```swift 
+import SwiftUI
+import MVIKit
+
+struct ContentView: View {
+    
+    @StateObject var store = Store(with: Scroll(), modelBuilder: { $0.Model() })
+    
+    var body: some View {
+        
+        ScrollView(
+            offsetChanged: { store.send(.didScroll($0)) }
+        ) {
+            LazyVStack {
+                ForEach((0...100), id: \.self) { int in
+                    Text("\(int)")
+                        .padding()
+                }
+            }
+        }
+    }
+}
+
+class Scroll: Reduceable {
+    
+    var model: Model?
+    
+    func reduce(_ action: Action) {
+        switch action {
+        case .didScroll(let offset):
+            print(offset)
+        }
+    }
+
+    class Model: ObservableObject {
+        
+    }
+    
+    enum Action: Equatable {
+        case didScroll(CGFloat)
+    }
+}
+```
