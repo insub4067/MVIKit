@@ -155,7 +155,7 @@ class MainTab: Reduceable {
 }
 ```
 
-## ✔️ Scroll
+## ✔️ Scroll Example
 ```swift 
 import SwiftUI
 import MVIKit
