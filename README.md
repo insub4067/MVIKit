@@ -88,7 +88,6 @@ class ViewController: UIViewController {
         bind()
     }
 
-    
     func bind() {
         store.$count
             .receive(on: DispatchQueue.main)
