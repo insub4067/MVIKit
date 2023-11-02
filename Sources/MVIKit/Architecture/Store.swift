@@ -19,10 +19,10 @@ public final class Store<Reducer: Reduceable>: ObservableObject {
     
     public init(
         with reducer: Reducer,
-        modelBuilder: (Reducer.Type) -> Reducer.Model
+        modelBuilder: () -> Reducer.Model
     ) {
         self.reducer = reducer
-        self.model = modelBuilder(Reducer.self)
+        self.model = modelBuilder()
         self.reducer.model = self.model
         
         model.objectWillChange

@@ -23,7 +23,7 @@ import MVIKit
 
 struct CounterView: View {
     
-    @StateObject var store = Store(with: Counter()) { $0.Model() }
+    @StateObject var store = Store(with: Counter()) { .init() }
     
     var body: some View {
         VStack(content: {
@@ -64,7 +64,7 @@ import Combine
 
 class ViewController: UIViewController { 
 
-    @Published var store = Store(with: Counter()) { $0.Model() }
+    @Published var store = Store(with: Counter()) { .init() }
     var cancellable = Set<AnyCancellable>()
     
     lazy var count: UILabel = {
@@ -125,7 +125,7 @@ import MVIKit
 
 struct SearchView: View {
     
-    @StateObject var store = Store(with: Search()) { $0.Model() }
+    @StateObject var store = Store(with: Search()) { .init() }
     
     var body: some View {
         VStack(content: {
@@ -166,7 +166,7 @@ import MVIKit
 
 struct MainTabView: View {
     
-    @StateObject var store = Store(with: MainTab()) { $0.Model() }
+    @StateObject var store = Store(with: MainTab()) { .init() }
     
     var body: some View {
     
@@ -224,7 +224,7 @@ import MVIKit
 
 struct ContentView: View {
     
-    @StateObject var store = Store(with: Scroll(), modelBuilder: { $0.Model() })
+    @StateObject var store = Store(with: Scroll(), modelBuilder: { .init() })
     
     var body: some View {
         
