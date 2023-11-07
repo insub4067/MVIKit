@@ -64,7 +64,7 @@ import Combine
 
 class ViewController: UIViewController { 
 
-    @Published var store = Store(with: Counter()) { .init() }
+    let store = Store(with: Counter()) { .init() }
     var cancellable = Set<AnyCancellable>()
     
     lazy var count: UILabel = {
